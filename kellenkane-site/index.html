@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kellen A. Kane, Ph.D., MPA | Public Policy</title>
+<meta name="description" content="Kellen A. Kane is an Assistant Professor of Instruction and Director of Undergraduate Student Success and Enrichment at the LBJ School of Public Affairs, UT Austin, studying how subnational politics and policy shape health and socioeconomic outcomes.">
+<meta property="og:title" content="Kellen A. Kane, Ph.D., MPA">
+<meta property="og:description" content="Assistant Professor of Instruction, LBJ School of Public Affairs, UT Austin.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.kellenkane.com/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ---- Colors and fonts: change these to restyle the whole site ---- */
+  :root {
+    --ink:     #1f2620;
+    --muted:   #5b665a;
+    --accent:  #4e6b47;   /* deep sage: dark enough for readable links and buttons */
+    --sage:    #9caf88;   /* classic sage, used for decorative lines */
+    --paper:   #ffffff;
+    --tint:    #f2f5ef;
+    --line:    #dfe5da;
+    --maxw:    1040px;
+    --serif: "Spectral", Georgia, "Times New Roman", serif;
+    --sans:  "Public Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--serif); font-size: 1.125rem; line-height: 1.7;
+  }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:hover { color: var(--ink); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  /* ---- Top navigation ---- */
+  header.nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(255,255,255,.94); backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  header.nav .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; height: 60px; font-family: var(--sans);
+  }
+  .brand { font-weight: 600; color: var(--ink); text-decoration: none; font-size: 1rem; }
+  nav a {
+    font-size: .95rem; color: var(--muted); text-decoration: none; margin-left: 22px;
+  }
+  nav a:hover { color: var(--accent); }
+
+  /* ---- Intro ---- */
+  .intro {
+    display: grid; grid-template-columns: 290px 1fr; gap: 48px;
+    align-items: start; padding: 64px 0 56px;
+  }
+  .photo {
+    width: 290px; aspect-ratio: 4 / 5; border-radius: 6px; overflow: hidden;
+    background: var(--tint); display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 3.5rem; color: var(--muted);
+  }
+  .photo img { width: 100%; height: 100%; object-fit: cover; }
+  h1 {
+    font-weight: 500; font-size: clamp(2.3rem, 5vw, 3.4rem);
+    line-height: 1.08; margin: 0 0 10px; letter-spacing: -.01em;
+  }
+  .role { font-family: var(--sans); font-size: 1rem; color: var(--muted); margin: 0 0 22px; }
+  .role strong { color: var(--ink); font-weight: 600; }
+  .areas {
+    list-style: none; padding: 0; margin: 0 0 26px;
+    display: flex; flex-wrap: wrap; gap: 6px 18px;
+    font-family: var(--sans); font-size: .95rem; font-weight: 500; color: var(--accent);
+  }
+  .intro p { margin: 0 0 14px; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; font-family: var(--sans); }
+  .btn {
+    font-size: .92rem; font-weight: 500; text-decoration: none;
+    padding: 8px 16px; border: 1px solid var(--line); border-radius: 4px; color: var(--ink);
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.primary:hover { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+  /* ---- Sections ---- */
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+  h2 { font-weight: 500; font-size: 2rem; margin: 0 0 8px; }
+  .lede { color: var(--muted); margin: 0 0 32px; }
+  h3 {
+    font-family: var(--sans); font-size: 1.05rem; font-weight: 600;
+    margin: 40px 0 14px; color: var(--ink);
+  }
+
+  /* ---- Research: paper cards with status tags ---- */
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; font-family: var(--sans); }
+  .filters button {
+    font: inherit; font-size: .9rem; cursor: pointer;
+    padding: 6px 14px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--paper); color: var(--muted);
+  }
+  .filters button:hover { border-color: var(--accent); color: var(--accent); }
+  .filters button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+  .papers { display: grid; gap: 16px; }
+  .paper {
+    border: 1px solid var(--line); border-radius: 6px; padding: 22px 26px;
+    background: var(--paper);
+  }
+  .paper.has-fig { display: grid; grid-template-columns: 1fr 300px; gap: 28px; align-items: start; }
+  .paper[hidden] { display: none; }
+  .status { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 10px; font-family: var(--sans); font-size: .85rem; }
+  .tag {
+    display: inline-block; padding: 2px 10px; border-radius: 999px;
+    font-weight: 600; font-size: .8rem; line-height: 1.6;
+  }
+  /* One color per status, so the kind of paper reads at a glance */
+  .tag.wp    { background: #eef1e4; color: #5a6232; }
+  .tag.pub   { background: #dce8d6; color: #34502f; }
+  .tag.ch    { background: #e0ebe7; color: #35554d; }
+  .tag.note  { background: var(--tint); color: var(--muted); font-weight: 500; }
+  .tag.wip   { background: #f0f2ec; color: #5b665a; border: 1px dashed #b9c4ad; }
+  .group-head { margin: 28px 0 0; }
+  .wip-item {
+    border-left: 3px solid var(--sage); padding: 4px 0 4px 20px; margin: 4px 0;
+  }
+  .wip-item[hidden], .group-head[hidden] { display: none; }
+  .wip-item h4 { font-weight: 500; font-size: 1.15rem; line-height: 1.3; margin: 0 0 4px; }
+  .wip-item .authors { margin: 0 0 4px; }
+  .venue { color: var(--muted); }
+  .paper h4 { font-weight: 500; font-size: 1.3rem; line-height: 1.3; margin: 0 0 6px; }
+  .paper h4 a { color: var(--ink); text-decoration-color: var(--line); }
+  .paper h4 a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+  .authors { font-family: var(--sans); font-size: .9rem; color: var(--muted); margin: 0 0 10px; }
+  .paper p.sum { margin: 0; font-size: 1.02rem; }
+  .methods { font-family: var(--sans); font-size: .85rem; color: var(--muted); margin: 10px 0 0; }
+  .paper figure { margin: 0; }
+  .paper figure img { border-radius: 4px; border: 1px solid var(--line); }
+  .paper figcaption { font-family: var(--sans); font-size: .8rem; color: var(--muted); margin-top: 6px; }
+  .fig-missing {
+    aspect-ratio: 4 / 3; border: 2px dashed var(--line); border-radius: 4px;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: 12px; font-family: var(--sans); font-size: .85rem; color: var(--muted); background: var(--tint);
+  }
+  /* Featured book project */
+  .book {
+    display: grid; grid-template-columns: 200px 1fr; gap: 36px; align-items: start;
+    border-top: 3px solid var(--sage); background: var(--tint);
+    border-radius: 0 0 6px 6px; padding: 30px 32px; margin: 8px 0 44px;
+  }
+  .book.no-cover { grid-template-columns: 1fr; }
+  .book-cover img, .book-cover .fig-missing { aspect-ratio: 2 / 3; width: 100%; border-radius: 3px; }
+  .book-cover img { object-fit: cover; box-shadow: 0 6px 18px rgba(31,38,32,.18); }
+  .book h3.book-title { font-family: var(--serif); font-weight: 500; font-size: 1.75rem; line-height: 1.2; margin: 0 0 14px; }
+  .book p { margin: 0 0 12px; }
+  .chapters { margin: 16px 0 18px; padding-left: 1.4em; font-size: 1rem; }
+  .chapters li { padding: 2px 0; }
+  .tag.bk { background: var(--accent); color: #fff; }
+  .diss-note {
+    background: var(--tint); border-radius: 6px; padding: 18px 22px; margin: 0 0 16px;
+    font-size: 1rem;
+  }
+  .diss-note strong { font-weight: 600; }
+  /* Teaching */
+  .teach { display: grid; grid-template-columns: 1fr; gap: 28px; }
+  .teach h3 { margin-top: 0; }
+  .prior { font-weight: 500; color: var(--muted); }
+  .courses { list-style: none; padding: 0; margin: 0 0 20px; }
+  .courses li {
+    display: grid; grid-template-columns: 1fr auto; gap: 12px;
+    padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 1.02rem;
+  }
+  .code { font-family: var(--sans); font-size: .85rem; color: var(--muted); display: block; }
+  .term { font-family: var(--sans); font-size: .85rem; color: var(--muted); white-space: nowrap; text-align: right; }
+  .sub { font-family: var(--sans); font-size: .9rem; font-weight: 500; color: var(--muted); margin: 18px 0 4px; }
+  blockquote {
+    margin: 40px 0 0; padding: 0 0 0 22px; border-left: 3px solid var(--sage);
+    font-size: 1.3rem; line-height: 1.5; font-style: italic;
+  }
+  blockquote footer { font-style: normal; font-family: var(--sans); font-size: .9rem; color: var(--muted); margin-top: 10px; }
+
+  /* Abstract previews */
+  .abstract { margin: 0; font-size: 1rem; }
+  .abstract.clamped { display: -webkit-box; -webkit-line-clamp: 4; line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+  .more {
+    font: inherit; font-family: var(--sans); font-size: .85rem; font-weight: 500;
+    background: none; border: 0; padding: 0; margin-top: 6px; color: var(--accent); cursor: pointer;
+  }
+  .more:hover { color: var(--ink); text-decoration: underline; }
+  /* Book chapter outline */
+  details.outline { margin-top: 6px; }
+  details.outline summary {
+    cursor: pointer; font-family: var(--sans); font-size: .92rem; font-weight: 600; color: var(--accent);
+  }
+  .chapters { list-style: none; padding: 0; counter-reset: ch; }
+  .chapters li { padding: 5px 0; border-bottom: 1px solid var(--line); }
+  .chapters li:last-child { border-bottom: 0; }
+  .chapters li:not([value]) { counter-increment: ch; }
+  .chapters li:not([value])::before { content: "Chapter " counter(ch) ". "; font-family: var(--sans); font-size: .85rem; font-weight: 600; color: var(--muted); }
+  .ch-label { font-family: var(--sans); font-size: .85rem; font-weight: 600; color: var(--muted); }
+  /* Teaching */
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 8px 0 32px; }
+  .pillar { background: var(--tint); border-top: 3px solid var(--sage); border-radius: 0 0 6px 6px; padding: 18px 20px; }
+  .pillar h3 { margin: 0 0 8px; font-size: 1rem; }
+  .pillar p { margin: 0; font-size: .98rem; line-height: 1.6; }
+  .ratings { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .rating { border: 1px solid var(--line); border-radius: 6px; padding: 16px 18px; display: flex; flex-direction: column; gap: 2px; }
+  .score { font-family: var(--serif); font-size: 2.4rem; line-height: 1.1; color: var(--accent); }
+  .rlabel { font-family: var(--sans); font-size: .88rem; color: var(--muted); }
+  .ratings-note { font-family: var(--sans); font-size: .85rem; color: var(--muted); margin: 10px 0 0; }
+  .mentoring { margin: 36px 0 40px; }
+  blockquote.small { font-size: 1.1rem; margin-top: 28px; }
+
+  .rmeta { font-family: var(--sans); font-size: .78rem; color: var(--muted); opacity: .85; }
+  .quotes-head { margin: 40px 0 6px; }
+  blockquote.feature { margin: 12px 0 20px; }
+  .quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  blockquote.q {
+    margin: 0; padding: 16px 18px; border: 1px solid var(--line); border-left: 3px solid var(--sage);
+    border-radius: 0 6px 6px 0; font-size: 1rem; line-height: 1.55; font-style: italic;
+  }
+  blockquote.q footer { font-size: .82rem; margin-top: 8px; }
+  .syl {
+    font-family: var(--sans); font-size: .78rem; font-weight: 500; text-decoration: none;
+    margin-left: 8px; padding: 1px 8px; border: 1px solid var(--line); border-radius: 999px; white-space: nowrap;
+  }
+  .syl:hover { border-color: var(--accent); }
+  .teach { margin-top: 44px; }
+
+  .paper.has-fig { grid-template-columns: 1fr 340px; }
+  .zoom { display: block; cursor: zoom-in; }
+  .zoom img { background: #fff; transition: box-shadow .15s; }
+  .zoom:hover img { box-shadow: 0 4px 14px rgba(31,38,32,.15); }
+  .enlarge { color: var(--muted); }
+
+  /* Footer */
+  footer.site {
+    border-top: 1px solid var(--line); padding: 28px 0 40px;
+    font-family: var(--sans); font-size: .9rem; color: var(--muted);
+  }
+
+  /* ---- Phones and small screens ---- */
+  @media (max-width: 760px) {
+    nav a { margin-left: 14px; font-size: .9rem; }
+    .brand { display: none; }
+    header.nav .wrap { justify-content: center; }
+    .intro { grid-template-columns: 1fr; gap: 28px; padding-top: 40px; }
+    .photo { width: 180px; }
+    .teach { grid-template-columns: 1fr; gap: 8px; }
+    .paper { padding: 18px 18px; }
+    .paper.has-fig { grid-template-columns: 1fr; gap: 16px; }
+    .book { grid-template-columns: 1fr; gap: 22px; padding: 24px 18px; }
+    .book-cover { width: 150px; }
+    .pillars, .ratings, .quotes { grid-template-columns: 1fr; }
+  }
+</style>
+<script>
+  // If a figure file is missing: show a labeled placeholder while you preview
+  // the page on your own computer, but hide it cleanly on the live website.
+  function missingFigure(img) {
+    var fig = img.closest('figure') || img.parentNode, card = fig.closest('.paper'), file = img.getAttribute('src');
+    if (location.protocol === 'file:') {
+      var box = document.createElement('div');
+      box.className = 'fig-missing';
+      box.textContent = 'Figure goes here: ' + file;
+      img.replaceWith(box);
+    } else {
+      var book = fig.closest('.book');
+      fig.remove();
+      if (card) card.classList.remove('has-fig');
+      if (book) book.classList.add('no-cover');
+    }
+  }
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#about">Kellen A. Kane, Ph.D., MPA</a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#teaching">Teaching</a>
+      <a href="CV.pdf" target="_blank" rel="noopener">CV</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ================= ABOUT ================= -->
+  <div class="intro" id="about">
+    <div class="photo">
+      <!-- Put your photo in the images folder, named headshot.jpg -->
+      <img src="images/headshot.jpg" alt="Kellen A. Kane"
+           onerror="this.parentNode.textContent='KK'">
+    </div>
+    <div>
+      <h1>Kellen A. Kane, Ph.D., MPA</h1>
+      <p class="role"><strong>Assistant Professor of Instruction</strong> and <strong>Director of Undergraduate Student Success and Enrichment</strong>, LBJ School of Public Affairs, The University of Texas at Austin</p>
+      <ul class="areas">
+        <li>Social policy</li>
+        <li>Health policy</li>
+        <li>State politics</li>
+        <li>Program evaluation</li>
+        <li>LGBTQIA+ politics and policy</li>
+      </ul>
+      <p>I am a public policy scholar who studies how variation in subnational politics and policy shapes health and socioeconomic outcomes for historically marginalized communities, with particular attention to sexual and reproductive health and LGBTQ+ communities. I use econometrics, methods from applied geography, and text analysis. With Tracee Saunders and Candis Watts Smith, I am writing <em>Unplanning Parenthood</em>, a book on how partisan pendulum swings and policy precarity have eroded access to contraception through the federal Title X program.</p>
+      <p>At the <a href="https://lbj.utexas.edu/" target="_blank" rel="noopener">LBJ School</a>, I teach core and elective courses in public affairs, public management, and social policy, and I direct undergraduate student success and enrichment. Before joining UT, I was a Program Evaluator at the U.S. Office of Personnel Management, where I designed and led a multi-agency randomized controlled trial of a federal Diversity, Equity, Inclusion, and Accessibility training program and studied the uptake of the federal paid parental leave benefit and the effects of telework and remote work policies. I began that partnership as an OPM Academic Affiliate while a Research Fellow with the <a href="https://www.bettergovernmentlab.org/about" target="_blank" rel="noopener">Better Government Lab</a> at Georgetown's McCourt School of Public Policy.</p>
+      <p>I earned my Ph.D. in Public Policy from the University of North Carolina at Chapel Hill, where I hold a fixed-term graduate faculty appointment, and my MPA and B.S. in Cell and Molecular Biology from West Chester University of Pennsylvania.</p>
+      <div class="links">
+        <a class="btn primary" href="CV.pdf" target="_blank" rel="noopener">Download CV</a>
+        <a class="btn" href="mailto:kellen.kane@austin.utexas.edu">Email</a>
+        <!-- To add profile links: fill in your real URLs below, then delete this comment's opening and closing markers.
+        <a class="btn" href="https://www.linkedin.com/in/YOUR-PROFILE" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://scholar.google.com/citations?user=YOUR-ID" target="_blank" rel="noopener">Google Scholar</a>
+        -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= RESEARCH ================= -->
+  <section id="research">
+    <h2>Research</h2>
+    <p class="lede">My research asks why policies meant to improve health and socioeconomic outcomes so often fail to reach the people who need them most. I trace this puzzle from the politics that shape which health and social policies get written and adopted, through the administrative variation that determines whether they are implemented as designed, to the uneven health and economic consequences that follow, even for policies with broad consensus or explicit targeting.</p>
+    <p class="lede">My work appears in <em>Health Economics, Policy and Law</em>, <em>Health Affairs Scholar</em>, <em>Politics &amp; Gender</em>, the <em>Journal of Health Politics, Policy and Law</em>, and <em>The Forum</em>, and has been covered by <em>The Economist</em>, <em>Forbes</em>, and PBS and cited in a proposed rule by the U.S. Department of the Treasury. It has been recognized with APSA's Kenneth Sherrill Prize, the State Politics and Policy Conference's Thomas Carsey Scholar Award, and an award from the Society for Family Planning, and supported by the Williams Institute at UCLA School of Law.</p>
+
+    <!-- ============ BOOK PROJECT ============ -->
+    <div class="book">
+      <div class="book-cover">
+        <!-- Use a cover, or a key map from the book, saved as images/book_cover.jpg -->
+        <img src="images/book_cover.jpg" alt="Map of contraception deserts from Unplanning Parenthood" onerror="missingFigure(this)">
+      </div>
+      <div>
+        <div class="status"><span class="tag bk">Book project</span><span class="venue">Manuscript in progress</span></div>
+        <h3 class="book-title">Unplanning Parenthood: The Politics of Partisan Pendulum Swings, Policy Precarity, and Contraception Deserts</h3>
+        <p class="authors"><strong>Kellen A. Kane</strong>, Tracee Saunders, and Candis Watts Smith</p>
+        <p>Americans disagree on many things, but on one issue their consensus is striking: people should be able to access birth control. President Nixon signed Title X, the only federal program dedicated to family planning, with bipartisan support in 1970, and roughly three-quarters of Americans, including majorities across party lines, support protecting access to contraception today. Yet in the post-<em>Dobbs</em> era, contraception access has grown more contested, and the places where people lack it, which we call contraception deserts, are growing.</p>
+        <p><em>Unplanning Parenthood</em> examines this paradox: a policy domain with near-universal public support that has nonetheless been eroded through bureaucratic rule changes, intergovernmental conflict, and partisan polarization. We argue that partisan pendulum swings at the national level, the nationalization of political parties, and high-stakes power struggles across levels of government together produce <em>policy precarity</em>, destabilizing the reproductive health care that Title X historically provided to the communities with the greatest need. The book focuses on the Trump-Biden-Trump years, when this whiplash has been most aggressive.</p>
+        <p>We pair a census-tract-level atlas of contraception deserts across all 50 states and DC with interviews with the Title X administrators who allocate the program's resources, and we use multilevel regression and poststratification to link access to health outcomes.</p>
+        <details class="outline">
+          <summary>Chapter outline</summary>
+          <ol class="chapters">
+            <li value="0"><span class="ch-label">Introduction.</span> Curtailing Abortion by Day, Access to Contraception by Night</li>
+            <li>A Little Program with a Huge Impact: Title X</li>
+            <li>The Geography of Access: Contraception Deserts</li>
+            <li>An Atlas of Contraception Deserts</li>
+            <li>Some Do It This Way&hellip; Others Do It That Way</li>
+            <li>Unplanning Parenthood</li>
+            <li>The (Human) Ramifications</li>
+            <li value="99"><span class="ch-label">Conclusion.</span> Lessons Learned&hellip; or Aggressively Ignored</li>
+          </ol>
+        </details>
+      </div>
+    </div>
+
+    <div class="filters" role="group" aria-label="Filter papers">
+      <button type="button" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" data-filter="pub" aria-pressed="false">Published</button>
+      <button type="button" data-filter="wp" aria-pressed="false">Working papers</button>
+      <button type="button" data-filter="wip" aria-pressed="false">Work in progress</button>
+    </div>
+
+    <!--
+      HOW TO ADD A PAPER: copy one <article> block and edit it.
+        data-status="pub" + <span class="tag pub">Published</span>   journal articles
+        data-status="pub" + <span class="tag ch">Book chapter</span> chapters
+        data-status="wp"  + <span class="tag wp">Working paper</span>
+        data-status="wip" + <span class="tag wip">In preparation</span>
+      Abstracts go in <p class="abstract">; long ones are trimmed to a preview
+      with a "Read full abstract" button automatically.
+      Figures: save the image under the filename shown in the paper's <img> line.
+    -->
+
+    <div class="papers">
+
+      <article class="paper has-fig" data-status="pub">
+        <div>
+          <div class="status"><span class="tag pub">Published</span><span class="venue"><em>Health Economics, Policy and Law</em>, 2026</span><span class="tag note">Open access</span></div>
+          <h4><a href="https://doi.org/10.1017/S1744133126100528" target="_blank" rel="noopener">The Changing Landscape of PrEP Deserts in the United States</a></h4>
+          <p class="authors"><strong>Kellen A. Kane</strong></p>
+          <p class="abstract">Pre-exposure prophylaxis (PrEP) is a critical intervention that greatly reduces the risk of HIV transmission, yet limited access to prescribing providers continues to constrain uptake in the United States. This study examines how geographic access to PrEP providers changed between 2020 and 2023 and identifies areas with limited access, referred to as PrEP deserts. Using the Integrated two-step floating catchment area method, this study finds that despite widespread gains in PrEP access, five states experienced increases in the total population living in PrEP deserts. Additionally, more than 5 million residents in states designated as priority jurisdictions under the Ending the HIV epidemic initiative gained geographic access to PrEP providers between 2020 and 2023. However, improvements were uneven: in some states, communities of colour experienced declining access and remain disproportionately represented in PrEP deserts. These findings highlight persistent geographic and demographic disparities in HIV prevention infrastructure despite recent federal efforts to expand PrEP availability.</p>
+        </div>
+        <figure>
+          <a class="zoom" href="images/fig_prep.jpg" target="_blank" rel="noopener" title="Open full-size figure"><img src="images/fig_prep_preview.jpg" alt="Maps of PrEP deserts in Kentucky in 2020 and 2023, with deserts eliminated and newly created between those years" loading="lazy" onerror="missingFigure(this)"></a>
+          <figcaption>PrEP deserts in Kentucky, 2020 and 2023. <span class="enlarge">Click for the full figure, including deserts eliminated and created.</span></figcaption>
+        </figure>
+      </article>
+
+      <article class="paper has-fig" data-status="pub">
+        <div>
+          <div class="status"><span class="tag pub">Published</span><span class="venue"><em>Health Affairs Scholar</em>, 2026</span><span class="tag note">Open access</span></div>
+          <h4><a href="https://doi.org/10.1093/haschl/qxag082" target="_blank" rel="noopener">Implementing Title X: Policy Design, Administration, and Geographic Access to Care</a></h4>
+          <p class="authors">Tracee M. Saunders, <strong>Kellen A. Kane</strong>, and Candis Watts Smith</p>
+          <p class="abstract">Title X of the Public Health Service Act is a critical federal program—the only one dedicated exclusively to providing affordable, confidential, evidence-based reproductive health care to low-income populations, yet its capacity to fulfill this mandate depends on political, administrative, and fiscal decisions made across multiple levels of governance—from Congress and federal regulators to state and regional grantees and their sub-grantee clinic networks. This study assesses geographic access to Title X-funded clinics across all 50 states and the District of Columbia in 2024, a period with significant program and regulatory disruption. Using the Integrated Two-Step Floating Catchment Area (I2SFCA) method—which employs road-network-based drive time thresholds calibrated to urban–rural context—applied to 2024 clinic locations and census-tract-level demographic data, we identify a confluence of spatial and nonspatial barriers to Title X. Findings reveal widespread and substantial gaps in geographic access, a challenge faced by people across all racial groups, rural and urban residents, and individuals with low incomes. These findings offer a precise geographic account of where Title X's reach falls shortest—documenting the ramifications of policy retrenchment and establishing a baseline against which future policy changes can be measured.</p>
+        </div>
+        <figure>
+          <a class="zoom" href="images/fig_titlex_2024.png" target="_blank" rel="noopener" title="Open full-size figure"><img src="images/fig_titlex_2024.png" alt="Bar chart of the share of each state's population living in a Title X contraception desert in 2024, ranging from under 20 percent to over 90 percent" loading="lazy" onerror="missingFigure(this)"></a>
+          <figcaption>Share of each state's population living in a contraception desert, 2024. <span class="enlarge">Click to enlarge.</span></figcaption>
+        </figure>
+      </article>
+
+      <article class="paper has-fig" data-status="pub">
+        <div>
+          <div class="status"><span class="tag pub">Published</span><span class="venue"><em>Politics &amp; Gender</em>, 2022</span></div>
+          <h4><a href="https://doi.org/10.1017/S1743923X2100009X" target="_blank" rel="noopener">Contraception Deserts: The Effects of Title X Rule Changes on Access to Reproductive Health Care Resources</a></h4>
+          <p class="authors">Candis Watts Smith, Rebecca J. Kreitzer, <strong>Kellen A. Kane</strong>, and Tracee M. Saunders</p>
+          <p class="abstract">Historically, access to contraception has been supported in a bipartisan way, best exemplified by consistent congressional funding of Title X—the only federal program specifically focused on providing affordable reproductive health care to American residents. However, in an era of partisan polarization, Title X has become a political and symbolic pawn, in part because of its connection to family planning organizations like Planned Parenthood. The conflicts around Title X highlight the effects of intertwining abortion politics and contraception policy, particularly as they relate to reproductive justice and gendered policy making. Family planning organizations like Planned Parenthood have responded to these battles by bowing out of the Title X network. To what extent have contraception deserts—places characterized by inequitable access to Title X—developed or expanded in response to policy changes related to contraception and reproductive health? What is the demographic makeup of these spaces of inequality? We leverage data from the Office of Population Affairs and the U.S. Census Bureau and use the integrated two-step floating catchment area method to illustrate the effects of a major change in the Title X network in 10 states. Our results reveal the widespread human ramifications of increasing constraints on family planning organizations as a result of quiet but insidious federal bureaucratic rule changes.</p>
+        </div>
+        <figure>
+          <a class="zoom" href="images/fig_titlex.png" target="_blank" rel="noopener" title="Open full-size figure"><img src="images/fig_titlex.png" alt="Side-by-side maps of California's contraception deserts before and after Planned Parenthood's withdrawal from Title X, with expanded deserts highlighted" loading="lazy" onerror="missingFigure(this)"></a>
+          <figcaption>California's contraception deserts before and after Planned Parenthood left the Title X network. <span class="enlarge">Click to enlarge.</span></figcaption>
+        </figure>
+      </article>
+
+      <article class="paper has-fig" data-status="pub">
+        <div>
+          <div class="status"><span class="tag pub">Published</span><span class="venue"><em>Journal of Health Politics, Policy and Law</em>, 2021</span></div>
+          <h4><a href="https://doi.org/10.1215/03616878-8802186" target="_blank" rel="noopener">Affordable but Inaccessible? Contraception Deserts in the US States</a></h4>
+          <p class="authors">Rebecca J. Kreitzer, Candis Watts Smith, <strong>Kellen A. Kane</strong>, and Tracee M. Saunders</p>
+          <p class="abstract">This article focuses on whether, and the extent to which, the resources made available by Title X—the only federal policy aimed specifically at reproductive health care—are equitably accessible. Here, equitable means that barriers to accessing services are lowest for those people who need them most. The authors use geographic information systems (GIS) and statistical/spatial analysis (specifically the integrated two-step floating catchment area [I2SFCA] method) to study the spatial and nonspatial accessibility of Title X clinics in 2018. The authors find that contraception deserts vary across the states, with between 17% and 53% of the state population living in a desert. Furthermore, they find that low-income people and people of color are more likely to live in certain types of contraception deserts. The analyses reveal not only a wide range of sizes and shapes of contraception deserts across the US states but also a range of severity of inequity.</p>
+          <p class="methods">The journal's second most-read article of 2021. Covered by <em>The Economist</em>, <em>Forbes</em>, and PBS and cited in a proposed rule by the U.S. Department of the Treasury.</p>
+        </div>
+        <figure>
+          <a class="zoom" href="images/fig_deserts.png" target="_blank" rel="noopener" title="Open full-size figure"><img src="images/fig_deserts.png" alt="Maps of contraception deserts in California and Texas, 2018" loading="lazy" onerror="missingFigure(this)"></a>
+          <figcaption>Contraception deserts in California and Texas, 2018. <span class="enlarge">Click to enlarge.</span></figcaption>
+        </figure>
+      </article>
+
+      <article class="paper" data-status="pub">
+        <div>
+          <div class="status"><span class="tag pub">Published</span><span class="venue"><em>The Forum</em>, 2019</span></div>
+          <h4><a href="https://doi.org/10.1515/for-2019-0003" target="_blank" rel="noopener">The Evolution of Morality Policy Debate: Moralization and Demoralization</a></h4>
+          <p class="authors">Rebecca J. Kreitzer, <strong>Kellen A. Kane</strong>, and Christopher Z. Mooney</p>
+          <p class="abstract">Scholars of morality policy have built an extensive literature surrounding these issues, which often are associated with unusual political behavior. Early studies aimed at explaining this behavior but avoided defining a “morality policy” explicitly, typically by focusing on issues that appeared obviously to pertain to morality, like abortion and LGBTQ+ rights. Drawing on the existing morality policy scholarship and classic theories of public policy, we argue that no public policy is inherently moral. Rather, policies may be “moralized” or “demoralized” over time, not due to any intrinsic characteristic, but because the prominent policy frames in their debate have changed. Public opinion and its proxies, along with certain exogenous shocks, may be important in determining when a morality frame will be more prevalent. Because the distinctiveness of morality policy lies in the discourse surrounding it, scholars should examine the behavior and attitudes of relevant advocates in these debates, rather than relying on aggregate data and making assumptions about intrinsic policy characteristics.</p>
+        </div>
+      </article>
+
+      <article class="paper" data-status="pub">
+        <div>
+          <div class="status"><span class="tag ch">Book chapter</span><span class="venue"><a href="https://rowman.com/ISBN/9781538124628/Interest-Group-Politics-Tenth-Edition" target="_blank" rel="noopener"><em>Interest Group Politics</em>, 10th ed.</a>, Rowman &amp; Littlefield, 2019</span></div>
+          <h4>Whose Opinion Matters? The Role of Elite Actors and Interest Groups in Setting the Abortion Agenda</h4>
+          <p class="authors"><strong>Kellen A. Kane</strong>, Rebecca J. Kreitzer, and Emily U. Schilling. Edited by Burdett Loomis and Anthony Nownes.</p>
+          <p class="sum">Examines how interest groups shape the abortion policy agenda before legislation is ever introduced.</p>
+        </div>
+      </article>
+
+      <article class="paper has-fig" data-status="wp">
+        <div>
+          <div class="status"><span class="tag wp">Working paper</span><span class="venue">Presenting at APPAM, November 2026</span></div>
+          <h4>The Effect of Conversion Therapy Bans on Youth Mental Health and Suicidality</h4>
+          <p class="authors"><strong>Kellen A. Kane</strong> and Brennan Mange</p>
+          <p class="sum">Conversion therapy, a widely discredited practice that attempts to change a person's sexual orientation or gender identity, remains legal for minors in many states. Using survey data from the Youth Risk Behavior Survey and mortality data from the National Vital Statistics System, we estimate the effect of state bans on conversion therapy for minors on LGBTQ+ youth mental health and suicidality. We find that conversion therapy bans decrease the suicide rate among middle- and late-adolescent individuals, particularly among males.</p>
+        </div>
+        <figure>
+          <img src="images/fig_conversion.jpg" alt="Estimated effects of conversion therapy bans on adolescent suicide rates" onerror="missingFigure(this)">
+          <figcaption>[Caption.]</figcaption>
+        </figure>
+      </article>
+
+      <article class="paper has-fig" data-status="wp">
+        <div>
+          <div class="status"><span class="tag wp">Working paper</span></div>
+          <h4>Credits Where They Are Due? Health Effects of Expanded State EITCs for LGBTQ+ Individuals</h4>
+          <p class="authors"><strong>Kellen A. Kane</strong></p>
+          <p class="sum">The Earned Income Tax Credit is frequently held up as one of the most effective anti-poverty tools in social policy. Exploiting variation in the timing and generosity of state EITC supplements, I assess its health effects for individuals in same-sex households. While EITCs show no aggregate health effect for same-sex households relative to different-sex households, specific subgroups at the intersections of race, gender, and household composition are falling through the cracks, particularly in self-reported mental health. The findings point to a mismatch between the credit's design, whose generosity scales with dependents, and the distinct structural factors that shape poverty for LGBTQ+ people.</p>
+          <p class="methods">Supported by the Williams Institute at UCLA School of Law.</p>
+        </div>
+        <figure>
+          <img src="images/fig_eitc.jpg" alt="Estimated effects of state EITCs on health outcomes" onerror="missingFigure(this)">
+          <figcaption>State EITC effects on self-reported health.</figcaption>
+        </figure>
+      </article>
+
+      <article class="paper has-fig" data-status="wp">
+        <div>
+          <div class="status"><span class="tag wp">Working paper</span></div>
+          <h4>Queer-ying State Legislatures: A Latent Variable Approach to Measuring Queer-Friendly State Legislative Districts</h4>
+          <p class="authors"><strong>Kellen A. Kane</strong></p>
+          <p class="sum">Who holds power in a legislature shapes which health policies are even considered possible. Using an original dataset of openly LGBTQ+ state legislators, I build a new measure of district queer-friendliness. Districts that elect LGBTQ+ legislators tend to be more liberal, more college-educated, higher-income, and less religious, and the measure identifies districts likely to elect an LGBTQ+ legislator that have not yet done so. Drawn from my dissertation, which received APSA's 2022 Kenneth Sherrill Prize, I am extending this measure through the most recent election cycles.</p>
+        </div>
+        <figure>
+          <img src="images/fig_districts.jpg" alt="Map of state legislative districts by latent profile" onerror="missingFigure(this)">
+          <figcaption>Queer-friendly state legislative districts.</figcaption>
+        </figure>
+      </article>
+
+      <h3 class="group-head" data-status="wip">Work in progress</h3>
+
+      <article class="wip-item" data-status="wip">
+        <div class="status"><span class="tag wip">In preparation</span></div>
+        <h4>The Evolution and Influence of Pro-Life Interest Group Model Legislation</h4>
+        <p class="sum">Digitizing the full corpus of Americans United for Life's annual <em>Defending Life</em> publication since 2006, I trace how fill-in-the-blank model bills move from an advocacy organization into state law, shaping the options lawmakers consider before public debate begins.</p>
+      </article>
+
+      <article class="wip-item" data-status="wip">
+        <div class="status"><span class="tag wip">In preparation</span></div>
+        <h4>The Effects of ACA Rating Area Restructuring on Rural Insurance Markets: Evidence from Texas</h4>
+        <p class="authors">with Lillian R. Hudgins (undergraduate coauthor)</p>
+      </article>
+
+      <article class="wip-item" data-status="wip">
+        <div class="status"><span class="tag wip">In preparation</span></div>
+        <h4>The Effects of Queer-Inclusive Sex Education Curricular Requirements on High School Student Outcomes</h4>
+        <p class="authors">with Brennan Mange</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================= TEACHING ================= -->
+  <section id="teaching">
+    <h2>Teaching</h2>
+    <p class="lede">My teaching draws on my own path into higher education from a Title I high school and on my years in federal service. I want every student to connect theory to the contested politics of real policy debates, take an active part in class rather than passively receiving content, and leave with the professional skills public affairs work demands.</p>
+
+    <div class="ratings">
+      <div class="rating"><span class="score">4.82</span><span class="rlabel">Foundations of Public Affairs</span><span class="rmeta">Fall 2025, 92 of 94 students</span></div>
+      <div class="rating"><span class="score">5.00</span><span class="rlabel">Introduction to Social Policy</span><span class="rmeta">Spring 2026, 29 of 29 students</span></div>
+      <div class="rating"><span class="score">4.94</span><span class="rlabel">Public Management (graduate)</span><span class="rmeta">Spring 2026, 18 of 18 students</span></div>
+    </div>
+    <p class="ratings-note">Overall instructor rating on a 5-point scale, each above the LBJ School average.</p>
+
+    <h3 class="quotes-head">What students say</h3>
+    <blockquote class="feature">
+      Dr. Kane is one of one when it comes to inclusive, experienced and engaged professors at LBJ. He constantly went above and beyond to make sure the class was prepared and aided in succeeding at every step.
+      <footer>Public Management, Spring 2026</footer>
+    </blockquote>
+
+    <div class="quotes">
+      <blockquote class="q">
+        Dr. Kane is an amazing instructor and his way of speaking about complex topics truly makes you want to pay attention even if the topic area is not of your interest. He cares deeply for our learning and enjoyment in his class.
+        <footer>Introduction to Social Policy, Spring 2026</footer>
+      </blockquote>
+      <blockquote class="q">
+        He created a welcoming and engaging environment that made me look forward to attending each session. He also did an excellent job of explaining complex or dense concepts in accessible ways.
+        <footer>Public Management, Spring 2026</footer>
+      </blockquote>
+      <blockquote class="q">
+        One of the most effective aspects of the course was how approachable the professor was. That made the learning environment feel comfortable, supportive, and open, which helped my learning more than anything else.
+        <footer>Foundations of Public Affairs, Fall 2025</footer>
+      </blockquote>
+      <blockquote class="q">
+        I think that the course and assignment structure was very beneficial to learning how concepts of public management apply directly to the jobs that people do.
+        <footer>Public Management, Spring 2026</footer>
+      </blockquote>
+      <blockquote class="q">
+        The different assignments, like the book report and the social policy in the news assignments that allowed us to apply what we learned in class to real world situations were the most effective in helping me retain information.
+        <footer>Introduction to Social Policy, Spring 2026</footer>
+      </blockquote>
+      <blockquote class="q">
+        The professor truly cares about his students and makes sure we have a good understanding of each assignment before submitting it.
+        <footer>Foundations of Public Affairs, Fall 2025</footer>
+      </blockquote>
+    </div>
+
+    <!--
+      SYLLABI: save each PDF in a "syllabi" folder with the filename in its link
+      (e.g. syllabi/PA301_syllabus.pdf). To hide a link until the file is ready,
+      delete that <a class="syl" ...>...</a>.
+    -->
+    <div class="teach">
+      <div>
+        <h3>The University of Texas at Austin</h3>
+        <ul class="courses">
+          <li><span><span class="code">P A 301</span>Foundations of Public Affairs <a class="syl" href="syllabi/PA301_syllabus.pdf" target="_blank" rel="noopener">Syllabus</a></span><span class="term">Fall 2026, Fall 2025</span></li>
+          <li><span><span class="code">P A 325</span>Introduction to Social Policy <a class="syl" href="syllabi/PA325_syllabus.pdf" target="_blank" rel="noopener">Syllabus</a></span><span class="term">Fall 2026, Spring 2026</span></li>
+          <li><span><span class="code">P A 359</span>Public Affairs Internship</span><span class="term">Fall 2026</span></li>
+          <li><span><span class="code">P A 384D</span>Public Management (graduate) <a class="syl" href="syllabi/PA384D_syllabus.pdf" target="_blank" rel="noopener">Syllabus</a></span><span class="term">Spring 2026</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>University of North Carolina at Chapel Hill <span class="prior">(Prior)</span></h3>
+        <p class="sub">Instructor of record</p>
+        <ul class="courses">
+          <li><span><span class="code">PLCY 220</span>The Politics of Public Policy <a class="syl" href="syllabi/PLCY220_syllabus.pdf" target="_blank" rel="noopener">Syllabus</a></span><span class="term">Summer 2021, 2020</span></li>
+        </ul>
+        <p class="sub">Recitation instructor</p>
+        <ul class="courses">
+          <li><span><span class="code">PLCY 101</span>Making Public Policy</span><span class="term">Fall 2020</span></li>
+        </ul>
+        <p class="sub">Teaching assistant and graduate research consultant</p>
+        <ul class="courses">
+          <li><span><span class="code">PLCY 365</span>Sexuality, Gender, and Public Policy</span><span class="term">Spring 2022</span></li>
+          <li><span><span class="code">PLCY 220</span>The Politics of Public Policy</span><span class="term">Spring 2021</span></li>
+          <li><span><span class="code">PLCY 581</span>Research Design for Public Policy</span><span class="term">Spring and Summer 2020</span></li>
+          <li><span><span class="code">PLCY 210</span>Policy Innovation &amp; Analysis</span><span class="term">Fall 2018 – Fall 2019</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    Kellen A. Kane, LBJ School of Public Affairs, The University of Texas at Austin.
+    <a href="mailto:kellen.kane@austin.utexas.edu">kellen.kane@austin.utexas.edu</a>
+  </div>
+</footer>
+
+<script>
+  // Filter buttons for the research cards
+  document.querySelectorAll('.filters button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var f = btn.dataset.filter;
+      document.querySelectorAll('.filters button').forEach(function (b) {
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+      });
+      document.querySelectorAll('.papers > [data-status]').forEach(function (el) {
+        el.hidden = !(f === 'all' || el.dataset.status === f);
+      });
+    });
+  });
+</script>
+<script>
+  // Trim long abstracts to a preview with a toggle
+  document.querySelectorAll('.abstract').forEach(function (p, i) {
+    p.classList.add('clamped');
+    if (p.scrollHeight <= p.clientHeight + 2) { p.classList.remove('clamped'); return; }
+    p.id = p.id || 'abs-' + i;
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'more';
+    b.setAttribute('aria-controls', p.id); b.setAttribute('aria-expanded', 'false');
+    b.textContent = 'Read full abstract';
+    b.addEventListener('click', function () {
+      var open = p.classList.toggle('clamped') === false;
+      b.textContent = open ? 'Show less' : 'Read full abstract';
+      b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    p.after(b);
+  });
+</script>
+</body>
+</html>
